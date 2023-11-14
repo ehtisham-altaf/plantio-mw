@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const mongoose  = require("mongoose");
-const { count } = require("../models/product");
-const Product = require("../models/product");
-const {verifyAdminWithToken} = require("../tokenVerify")
+const { count } = require("./product");
+const Product = require("./product");
+const {verifyAdminWithToken} = require("./tokenVerify");
 
 router.post("/", verifyAdminWithToken, async (req, res) => {
     try {

@@ -1,12 +1,11 @@
-const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
-const connectToMongo = require("../db");
+const connectToMongo = require("../src/db");
 const { model } = require("mongoose");
 const serverless = require("serverless-http");
 const app = express();
 connectToMongo();
-const appPort = process.env.PORT || 2000;
+const appPort = 2000;
 
 
 const server = app.listen(appPort, () => {
@@ -31,8 +30,8 @@ app.get('/' , async (req, res) => {
 
 
 
-  app.use("/api/auth", require("../routes/auth"));
-  app.use("/api/products", require("../routes/product"));
+  app.use("/api/auth", require("../src/auth"));
+  app.use("/api/products", require("../src/product"));
 
 
 module.exports.handler = serverless(app);
